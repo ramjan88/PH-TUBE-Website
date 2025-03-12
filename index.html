@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- tailwind and daisyui cdn -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <title>PH-TUBE</title>
+    <style>
+      .inter-font {
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+    </style>
+  </head>
+  <body class="inter-font">
+    <header>
+      <nav
+        class="w-11/12 mx-auto flex justify-between items-center py-5 border-b-1 border-[#17171720]"
+      >
+        <div class="">
+          <img class="w-36" src="images/Logo.png" alt="" />
+        </div>
+        <div class="">
+          <button class="btn bg-[#25252533]">Sort by view</button>
+        </div>
+        <div class="">
+          <button class="btn bg-[#FF1F3D] text-white">Blog</button>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <div class="flex justify-center items-center gap-4 py-10 mb-4">
+          <button class="btn bg-[#FF1F3D] text-white">All</button>
+          <button class="btn bg-[#25252533]">Music</button>
+          <button class="btn bg-[#25252533]">Comedy</button>
+          <button class="btn bg-[#25252533]">Drawing</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="script/ph-tube.js"></script>
+  </body>
+</html>
