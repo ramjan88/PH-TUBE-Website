@@ -1,5 +1,5 @@
 //
-// load the btn categories
+// load the btn categories fetch function
 function loadCategories() {
   fetch("https://openapi.programming-hero.com/api/phero-tube/categories")
     .then((Response) => Response.json())
@@ -8,6 +8,7 @@ function loadCategories() {
     });
 }
 
+// showing the display button dainamically access function
 function displayCategories(categories) {
   const categoriesContainer = document.getElementById("categoties-container");
 
@@ -23,14 +24,27 @@ function displayCategories(categories) {
 loadCategories();
 
 //
-// select the categories videos
+// remove the class list function
+const removeActiveClass = () => {
+  let activeButtons = document.getElementsByClassName("active");
+
+  for (let btn of activeButtons) {
+    btn.classList.remove("active");
+  }
+};
+
+//
+// select the categories wise videos and distribute conditionally
 const loadCategoriesVideos = (id) => {
   let url = `https://openapi.programming-hero.com/api/phero-tube/category/${id} `;
-  console.log(url);
+  // console.log(url);
 
   fetch(url)
     .then((Response) => Response.json())
     .then((data) => {
+      //remove the active class click the before button active style
+      removeActiveClass();
+      //click the button
       let clickButton = document.getElementById(`btn-${id} `);
       clickButton.classList.add("active");
       console.log(clickButton);
@@ -45,6 +59,9 @@ const loadVideos = () => {
   fetch("https://openapi.programming-hero.com/api/phero-tube/videos")
     .then((Response) => Response.json())
     .then((data) => {
+      removeActiveClass();
+
+      document.getElementById("btn-all").classList.add("active");
       displayVideos(data.videos);
     });
 };
@@ -70,7 +87,7 @@ const displayVideos = (videos) => {
     let videoCard = document.createElement("div");
     videoCard.innerHTML = `
     
- <div class="card bg-base-100 shadow-sm">
+         <div class="card bg-base-100 shadow-sm">
           <figure class="relative">
             <img
               class="w-full h-[200px] object-cover"
@@ -107,9 +124,8 @@ const displayVideos = (videos) => {
               <p class="text-sm text-gray-400">${video.others.views} views</p>
             </div>
           </div>
+          <button onclick='loadVideoDetails(${video.video_id})'  class='btn btn-block'> Video Details</button>
         </div>
-    
-    
     `;
     videosContainer.appendChild(videoCard);
   });
