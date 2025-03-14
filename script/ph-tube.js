@@ -79,9 +79,9 @@ const displyVideoDetails = (video) => {
                 </figure>
                 <div class="card-body">
                   <h2 class="card-title">${video.title} </h2>
+                  <h2 class="text-sm font-semibold">${video.authors[0].profile_name} </h2>
                   <p>
-                    A card component has a figure, a body part, and inside body
-                    there are title and actions parts
+                   ${video.description}
                   </p>
                 </div>
               </div>
@@ -152,16 +152,22 @@ const displayVideos = (videos) => {
               <h2 class="text-sm font-semibold">${video.title} </h2>
               <p class="flex gap-2 text-sm text-gray-400">
                 ${video.authors[0].profile_name}
-                <img
+                ${
+                  video.authors[0].verified == true
+                    ? `                <img
                   class="w-5 h-5"
                   src="https://img.icons8.com/?size=96&id=98A4yZTt9abw&format=png"
                   alt=""
-                />
+                />`
+                    : ``
+                }
               </p>
               <p class="text-sm text-gray-400">${video.others.views} views</p>
             </div>
           </div>
-          <button onclick=loadVideoDetails('${video.video_id}')  class='btn btn-block'> Video Details</button>
+          <button onclick=loadVideoDetails('${
+            video.video_id
+          }')  class='btn btn-block'> Video Details</button>
         </div>
     `;
     videosContainer.appendChild(videoCard);
