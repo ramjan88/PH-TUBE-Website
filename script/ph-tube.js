@@ -1,4 +1,4 @@
-//
+//--------------------------------------------------------------------------------
 // load the btn categories fetch function
 function loadCategories() {
   fetch("https://openapi.programming-hero.com/api/phero-tube/categories")
@@ -23,7 +23,7 @@ function displayCategories(categories) {
 }
 loadCategories();
 
-//
+//-----------------------------------------------------------------------------
 // remove the class list function
 const removeActiveClass = () => {
   let activeButtons = document.getElementsByClassName("active");
@@ -33,7 +33,7 @@ const removeActiveClass = () => {
   }
 };
 
-//
+//---------------------------------------------------------------------------------
 // select the categories wise videos and distribute conditionally
 const loadCategoriesVideos = (id) => {
   let url = `https://openapi.programming-hero.com/api/phero-tube/category/${id} `;
@@ -52,7 +52,24 @@ const loadCategoriesVideos = (id) => {
     });
 };
 
-//
+//--------------------------------------------------------------------------------
+//show the video details in function
+//load
+const loadVideoDetails = (videoId) => {
+  let url = `https://openapi.programming-hero.com/api/phero-tube/video/${videoId} `;
+
+  fetch(url)
+    .then((Response) => Response.json())
+    .then((data) => {
+      displyVideoDetails(data.video);
+    });
+};
+//show display
+const displyVideoDetails = (video) => {
+  console.log(video);
+};
+
+//-----------------------------------------------------------------------------------
 // load videos in main body
 
 const loadVideos = () => {
@@ -66,6 +83,7 @@ const loadVideos = () => {
     });
 };
 
+// access the video all catagories
 const displayVideos = (videos) => {
   let videosContainer = document.getElementById("videos-Container");
   videosContainer.innerText = "";
@@ -124,7 +142,7 @@ const displayVideos = (videos) => {
               <p class="text-sm text-gray-400">${video.others.views} views</p>
             </div>
           </div>
-          <button onclick='loadVideoDetails(${video.video_id})'  class='btn btn-block'> Video Details</button>
+          <button onclick=loadVideoDetails('${video.video_id}')  class='btn btn-block'> Video Details</button>
         </div>
     `;
     videosContainer.appendChild(videoCard);
