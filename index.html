@@ -15,13 +15,6 @@
     <link rel="stylesheet" href="styles/style.css" />
 
     <title>PH-TUBE</title>
-    <style>
-      .inter-font {
-        font-family: "Inter", sans-serif;
-        font-weight: 400;
-        font-style: normal;
-      }
-    </style>
   </head>
   <body class="inter-font">
     <header>
@@ -49,7 +42,11 @@
         class="flex justify-center items-center gap-4 py-10 mb-4"
       >
         <div>
-          <button id="btn-all" onclick="loadVideos();" class="btn bg-[#25252533]">
+          <button
+            id="btn-all"
+            onclick="loadVideos();"
+            class="btn bg-[#25252533] hover:bg-[#FF1F3D] hover:text-white"
+          >
             All
           </button>
         </div>
@@ -67,6 +64,24 @@
             Oops!! Sorry, There is no content here
           </p>
         </div>
+      </section>
+      <!-- model show section -->
+      <section>
+        <!-- Open the modal using ID.showModal() method -->
+        <!-- <button class="btn" onclick="my_modal_1.showModal()">open modal</button> -->
+        <dialog id="video_details" class="modal">
+          <div class="modal-box">
+            <div id="details-container">
+
+            </div>
+            <div class="modal-action">
+              <form method="dialog">
+                <!-- if there is a button in form, it will close the modal -->
+                <button class="btn">Close</button>
+              </form>
+            </div>
+          </div>
+        </dialog>
       </section>
     </main>
     <!-- script -->
